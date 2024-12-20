@@ -339,7 +339,7 @@ const GenerativeMusicLandingPage = () => {
       
       {/* Footer */}
       <div className="absolute bottom-0 left-0 right-0 p-6 text-center text-white/50 text-sm tracking-widest">
-        © 2024 Hiato. Crafting reality through sound and vision.
+        © 2024 Hiato. Crafting reality through sound and vision
       </div>
     </div>
   );
