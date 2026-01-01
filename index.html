@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIATO — Immersive Installations & Generative Art</title>
+    <meta name="description" content="Hiato is a creative technology studio based in Dubai, specializing in immersive installations and generative art for brands, venues, and events.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">HIATO</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-logo">HIATO</h1>
+            <p class="hero-tagline">Immersive installations for brands, venues, and events</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <h2 class="section-title" data-animate>Selected Work</h2>
+            <div class="work-grid">
+                <article class="work-item" data-animate data-project="rimal">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="RIMAL Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Exterior Installation</span>
+                        <h3 class="work-title">RIMAL</h3>
+                    </div>
+                </article>
+
+                <article class="work-item" data-animate data-project="lumina">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="LUMINA Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Interactive Experience</span>
+                        <h3 class="work-title">LUMINA</h3>
+                    </div>
+                </article>
+
+                <article class="work-item" data-animate data-project="flux">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="FLUX Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Event Activation</span>
+                        <h3 class="work-title">FLUX</h3>
+                    </div>
+                </article>
+
+                <article class="work-item" data-animate data-project="oasis">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="OASIS Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Permanent Installation</span>
+                        <h3 class="work-title">OASIS</h3>
+                    </div>
+                </article>
+
+                <article class="work-item" data-animate data-project="pulse">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&q=80" alt="PULSE Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Generative Art</span>
+                        <h3 class="work-title">PULSE</h3>
+                    </div>
+                </article>
+
+                <article class="work-item" data-animate data-project="meridian">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=800&q=80" alt="MERIDIAN Installation">
+                        <div class="work-overlay"></div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Architectural Mapping</span>
+                        <h3 class="work-title">MERIDIAN</h3>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content" data-animate>
+                <h2 class="section-title">About</h2>
+                <div class="about-text">
+                    <p class="about-lead">Hiato creates moments of pause—where art, technology, and architecture converge to transform spaces into living, breathing experiences.</p>
+                    <p>Based in Dubai and part of the Allometrik group, we specialize in designing and producing immersive installations that captivate audiences and redefine the relationship between people and their environments. From permanent architectural interventions to ephemeral event activations, we bring monumental digital experiences to unexpected contexts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title" data-animate>Services</h2>
+            <div class="services-grid">
+                <div class="service-item" data-animate>
+                    <span class="service-number">01</span>
+                    <h3 class="service-title">Permanent Installations</h3>
+                    <p class="service-desc">Architectural-scale digital art that becomes part of the built environment.</p>
+                </div>
+                <div class="service-item" data-animate>
+                    <span class="service-number">02</span>
+                    <h3 class="service-title">Event Activations</h3>
+                    <p class="service-desc">Immersive experiences that transform events into unforgettable moments.</p>
+                </div>
+                <div class="service-item" data-animate>
+                    <span class="service-number">03</span>
+                    <h3 class="service-title">Interactive Experiences</h3>
+                    <p class="service-desc">Responsive environments that evolve with human presence and behavior.</p>
+                </div>
+                <div class="service-item" data-animate>
+                    <span class="service-number">04</span>
+                    <h3 class="service-title">Creative Technology Consulting</h3>
+                    <p class="service-desc">Strategic guidance for brands exploring the frontier of digital art.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-animate>
+                    <h2 class="section-title">Let's Create</h2>
+                    <div class="contact-details">
+                        <a href="mailto:hello@allometrik.com" class="contact-email">hello@allometrik.com</a>
+                        <p class="contact-location">Dubai, UAE</p>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://instagram.com/hiatolab" target="_blank" rel="noopener">Instagram</a>
+                        <a href="https://linkedin.com/company/hiato-studio" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <form class="contact-form" data-animate>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Tell us about your project" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-logo">HIATO</span>
+                <span class="footer-credit">Part of <a href="https://allometrik.com" target="_blank" rel="noopener">Allometrik</a></span>
+                <span class="footer-copy">© 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <div class="lightbox-content">
+            <div class="lightbox-image">
+                <img src="" alt="">
+            </div>
+            <div class="lightbox-info">
+                <span class="lightbox-category"></span>
+                <h3 class="lightbox-title"></h3>
+                <p class="lightbox-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="hero-animation.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
