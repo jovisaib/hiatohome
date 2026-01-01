@@ -298,8 +298,8 @@ img {
     
     .hero-logo {
         font-size: clamp(3rem, 18vw, 4rem);
-        letter-spacing: 0.2em;
-        margin-left: 0.2em;
+        letter-spacing: 0.15em;
+        margin-left: 0;
     }
 }
 
