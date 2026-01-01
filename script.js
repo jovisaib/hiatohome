@@ -6,40 +6,28 @@
 // Project data for lightbox
 const projectData = {
     rimal: {
-        title: 'RIMAL',
-        category: 'Exterior Installation',
-        description: 'A monumental LED façade installation inspired by the shifting sands of the Arabian desert. The generative artwork responds to wind patterns and temperature, creating an ever-evolving digital landscape across 2,000 square meters of architectural surface.',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=90'
+        title: 'RIMAL — Exterior',
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90'
     },
     lumina: {
-        title: 'LUMINA',
-        category: 'Interactive Experience',
-        description: 'An immersive light chamber that translates visitors\' movements into cascading waves of color and sound. Using depth sensors and custom software, LUMINA creates unique visual symphonies with each interaction.',
-        image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=90'
+        title: 'LUMINA — Interactive',
+        image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1600&q=90'
     },
     flux: {
-        title: 'FLUX',
-        category: 'Event Activation',
-        description: 'A dynamic projection mapping experience created for Dubai Design Week. FLUX transformed a heritage building into a living canvas, narrating the city\'s evolution through generative visuals and spatial sound.',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=90'
+        title: 'FLUX — Event',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=90'
     },
     oasis: {
-        title: 'OASIS',
-        category: 'Permanent Installation',
-        description: 'A meditative digital garden installed in a luxury hotel lobby. Using real-time data from local weather stations, OASIS generates an endless, tranquil landscape that shifts with the rhythms of nature.',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=90'
+        title: 'OASIS — Immersive Room',
+        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&q=90'
     },
     pulse: {
-        title: 'PULSE',
-        category: 'Generative Art',
-        description: 'An algorithmic artwork that visualizes the collective heartbeat of its audience. Wearable sensors aggregate biometric data, transforming individual rhythms into a unified, breathing light sculpture.',
-        image: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1200&q=90'
+        title: 'PULSE — Generative',
+        image: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1600&q=90'
     },
     meridian: {
-        title: 'MERIDIAN',
-        category: 'Architectural Mapping',
-        description: 'A large-scale projection mapping installation celebrating the astronomical heritage of the Middle East. MERIDIAN traces celestial movements across building surfaces, connecting ancient navigation with contemporary technology.',
-        image: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1200&q=90'
+        title: 'MERIDIAN — Mapping',
+        image: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1600&q=90'
     }
 };
 
@@ -52,9 +40,6 @@ const workItems = document.querySelectorAll('.work-item');
 const lightbox = document.getElementById('lightbox');
 const lightboxClose = document.querySelector('.lightbox-close');
 const lightboxImage = document.querySelector('.lightbox-image img');
-const lightboxTitle = document.querySelector('.lightbox-title');
-const lightboxCategory = document.querySelector('.lightbox-category');
-const lightboxDesc = document.querySelector('.lightbox-desc');
 const animatedElements = document.querySelectorAll('[data-animate]');
 const contactForm = document.querySelector('.contact-form');
 
@@ -124,9 +109,6 @@ function setupLightbox() {
 function openLightbox(project) {
     lightboxImage.src = project.image;
     lightboxImage.alt = project.title;
-    lightboxTitle.textContent = project.title;
-    lightboxCategory.textContent = project.category;
-    lightboxDesc.textContent = project.description;
     
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
