@@ -286,7 +286,7 @@ img {
 /* Small phones (iPhone SE, etc.) */
 @media (max-width: 480px) {
     .hero-content {
-        padding: var(--space-md) var(--space-md);
+        padding: var(--space-md) var(--space-sm);
     }
     
     .hero-tagline {
@@ -297,8 +297,8 @@ img {
     }
     
     .hero-logo {
-        font-size: clamp(3rem, 18vw, 4rem);
-        letter-spacing: 0.15em;
+        font-size: 15vw;
+        letter-spacing: 0.1em;
         margin-left: 0;
     }
 }
