@@ -269,6 +269,17 @@ img {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Mobile hero adjustments */
+@media (max-width: 767px) {
+    .hero-content {
+        padding: var(--space-md) var(--space-lg);
+    }
+    
+    .hero-tagline {
+        letter-spacing: 0.08em;
+    }
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: var(--space-lg);
