@@ -127,6 +127,20 @@ img {
     opacity: 1;
 }
 
+.nav-links a.nav-tool {
+    color: var(--color-accent);
+    opacity: 1;
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 168, 255, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a.nav-tool:hover {
+    background: rgba(0, 168, 255, 0.1);
+    border-color: var(--color-accent);
+}
+
 .nav-toggle {
     display: flex;
     flex-direction: column;
@@ -203,6 +217,14 @@ img {
 .mobile-menu.active a:nth-child(2) { transition-delay: 0.15s; }
 .mobile-menu.active a:nth-child(3) { transition-delay: 0.2s; }
 .mobile-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu.active a:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-menu a.nav-tool {
+    color: var(--color-accent);
+    padding: 8px 20px;
+    border: 1px solid rgba(0, 168, 255, 0.3);
+    border-radius: 6px;
+}
 
 /* ==========================================================================
    Hero Section

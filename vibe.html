@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Art Studio | HIATO</title>
+    <meta name="description" content="Create stunning generative art with HIATO. Manipulate shaders, particles, and colors in real-time.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="vibe-styles.css">
+</head>
+<body>
+    <!-- Minimal Header -->
+    <header class="vibe-header">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span class="header-logo">HIATO</span>
+        </a>
+        <div class="tool-title">
+            <span class="tool-badge">GENERATIVE ART</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn-icon" id="fullscreen-toggle" title="Fullscreen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Canvas Area -->
+    <main class="vibe-canvas-container">
+        <canvas id="vibe-canvas"></canvas>
+        <div class="canvas-overlay"></div>
+
+        <!-- Floating Info Panel -->
+        <div class="info-panel">
+            <div class="info-row">
+                <span class="info-label">FPS</span>
+                <span class="info-value" id="fps-display">60</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">MOOD</span>
+                <span class="info-value" id="mood-display">CALM</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">PALETTE</span>
+                <span class="info-value" id="palette-display">AURORA</span>
+            </div>
+        </div>
+
+        <!-- Coordinates Display -->
+        <div class="coords-display">
+            <span id="mouse-coords">0.00, 0.00</span>
+        </div>
+    </main>
+
+    <!-- Control Panel -->
+    <aside class="control-panel">
+        <div class="panel-header">
+            <h2>PARAMETERS</h2>
+            <button class="btn-collapse" id="panel-toggle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="panel-content">
+            <!-- Mood Presets -->
+            <div class="control-section">
+                <label class="section-label">MOOD</label>
+                <div class="preset-grid">
+                    <button class="preset-btn active" data-mood="calm">
+                        <span class="preset-icon">◉</span>
+                        <span>Calm</span>
+                    </button>
+                    <button class="preset-btn" data-mood="dreamy">
+                        <span class="preset-icon">◎</span>
+                        <span>Dreamy</span>
+                    </button>
+                    <button class="preset-btn" data-mood="chaotic">
+                        <span class="preset-icon">✦</span>
+                        <span>Chaotic</span>
+                    </button>
+                    <button class="preset-btn" data-mood="cosmic">
+                        <span class="preset-icon">✧</span>
+                        <span>Cosmic</span>
+                    </button>
+                    <button class="preset-btn" data-mood="aggressive">
+                        <span class="preset-icon">◆</span>
+                        <span>Aggressive</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Color Palettes -->
+            <div class="control-section">
+                <label class="section-label">PALETTE</label>
+                <div class="palette-grid">
+                    <button class="palette-btn active" data-palette="aurora" title="Aurora">
+                        <span class="color-swatch" style="--c1:#00a8ff;--c2:#7c3aed;--c3:#ec4899;--c4:#06b6d4"></span>
+                    </button>
+                    <button class="palette-btn" data-palette="ember" title="Ember">
+                        <span class="color-swatch" style="--c1:#ff6b35;--c2:#f7931e;--c3:#ffcc02;--c4:#ff4757"></span>
+                    </button>
+                    <button class="palette-btn" data-palette="forest" title="Forest">
+                        <span class="color-swatch" style="--c1:#2d5a27;--c2:#5a8f3e;--c3:#8bc34a;--c4:#c8e6c9"></span>
+                    </button>
+                    <button class="palette-btn" data-palette="ocean" title="Ocean">
+                        <span class="color-swatch" style="--c1:#0077b6;--c2:#00b4d8;--c3:#90e0ef;--c4:#023e8a"></span>
+                    </button>
+                    <button class="palette-btn" data-palette="monochrome" title="Monochrome">
+                        <span class="color-swatch" style="--c1:#ffffff;--c2:#888888;--c3:#444444;--c4:#000000"></span>
+                    </button>
+                    <button class="palette-btn" data-palette="neon" title="Neon">
+                        <span class="color-swatch" style="--c1:#ff00ff;--c2:#00ffff;--c3:#ffff00;--c4:#ff0080"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sliders -->
+            <div class="control-section">
+                <label class="section-label">MOTION</label>
+                <div class="slider-container">
+                    <input type="range" class="vibe-slider" id="speed-slider" min="0" max="100" value="30">
+                    <div class="slider-labels">
+                        <span>Still</span>
+                        <span>Rapid</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">COMPLEXITY</label>
+                <div class="slider-container">
+                    <input type="range" class="vibe-slider" id="complexity-slider" min="0" max="100" value="50">
+                    <div class="slider-labels">
+                        <span>Minimal</span>
+                        <span>Intricate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">FORM</label>
+                <div class="slider-container">
+                    <input type="range" class="vibe-slider" id="form-slider" min="0" max="100" value="50">
+                    <div class="slider-labels">
+                        <span>Organic</span>
+                        <span>Geometric</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">PARTICLES</label>
+                <div class="slider-container">
+                    <input type="range" class="vibe-slider" id="particles-slider" min="0" max="100" value="40">
+                    <div class="slider-labels">
+                        <span>None</span>
+                        <span>Dense</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="control-section actions">
+                <button class="action-btn primary" id="randomize-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+                    </svg>
+                    <span>Randomize</span>
+                </button>
+                <button class="action-btn" id="export-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <span>Export</span>
+                </button>
+                <button class="action-btn" id="record-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                    </svg>
+                    <span>Record</span>
+                </button>
+            </div>
+
+            <!-- Code Preview -->
+            <div class="control-section code-section">
+                <label class="section-label">
+                    SHADER CODE
+                    <button class="btn-copy" id="copy-code" title="Copy to clipboard">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                    </button>
+                </label>
+                <pre class="code-preview" id="code-preview"><code>// HIATO Generative Art
+// Shader parameters
+speed: 0.30
+complexity: 0.50
+form: 0.50
+particles: 0.40</code></pre>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Controls Toggle -->
+    <button class="mobile-panel-toggle" id="mobile-toggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v18M3 12h18"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="vibe-engine.js"></script>
+</body>
+</html>
